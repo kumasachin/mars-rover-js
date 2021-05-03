@@ -1,6 +1,6 @@
 export const data = [
   { name: 'r1', color: 'red', movement: '1 1 N|LMLMLMLM', grid: '5 5' },
-  { name: 'r2', color: 'red', movement: '2 1 N|LMLMLMLM', grid: '5 5' },
+  { name: 'r2', color: 'red', movement: '1 1 N|LMLMLMLM', grid: '5 5' },
   { name: 'r3', color: 'red', movement: '3 1 N|LMLMLMLM', grid: '5 5' },
   { name: 'r4', color: 'red', movement: '4 1 N|LMLMLMLM', grid: '5 5' },
   { name: 'r5', color: 'red', movement: '5 1 N|LMLMLMLM', grid: '5 5' },
