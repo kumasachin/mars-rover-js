@@ -119,11 +119,11 @@ export const robotNextStep = ({
     robotWithNewPosition.direction =
       CONFIG.RIGHT[robotWithNewPosition.direction];
   } else if (nextInstruction === 'M') {
-    // const newPositionWithDirection = frontMove();
-    // robotWithNewPosition = {
-    //   ...robotWithNewPosition,
-    //   ...newPositionWithDirection,
-    // };
+    const newPositionWithDirection = frontMove();
+    robotWithNewPosition = {
+      ...robotWithNewPosition,
+      ...newPositionWithDirection,
+    };
   }
 
   return robotWithNewPosition;
@@ -136,9 +136,13 @@ const checkCurrentIsNoLostCell = (
   robotNewDetails,
   dimension
 ) => {
-  const scentFound =
-    lostCell['xaxis'].includes(robotNewDetails['xaxis']) &&
-    lostCell['yaxis'].includes(robotNewDetails['yaxis']);
+  const scentFound = lostCell.some((item) => {
+    return (
+      item.xaxis === robotNewDetails['xaxis'] &&
+      item.yaxis === robotNewDetails['yaxis']
+    );
+  });
+
   const isRobotOnEdge =
     dimension[axis] - 1 === robotNewDetails[axis] ||
     robotNewDetails[axis] === 0;
@@ -165,8 +169,8 @@ const checkIfRobotIsLost = ({
     const lostRobot = {
       ...robotNewDetails,
       lost: {
-        x: robotNewDetails.x,
-        y: robotNewDetails.y,
+        xaxis: robotNewDetails.xaxis,
+        yaxis: robotNewDetails.yaxis,
       },
     };
 

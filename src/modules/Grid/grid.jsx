@@ -7,7 +7,7 @@ import './grid.css';
 
 export const Grid = () => {
   const marsData = useMarsContextAPI();
-  const { dimension, robots, updateRobotData } = marsData;
+  const { dimension, robots, updateRobotData, lostCell } = marsData;
   const [robotList, setRobotNewPosition] = useState(robots);
   const [iteratorForRobot, setInstructionStatus] = useState({
     instructionCount: 0,
@@ -41,6 +41,7 @@ export const Grid = () => {
       robotToMove: robot,
       nextInstruction: nextInstruction,
       dimension: dimension,
+      lostCell: lostCell,
     });
 
     return robotWithNewPosition;

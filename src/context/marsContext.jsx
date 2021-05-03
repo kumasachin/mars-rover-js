@@ -21,6 +21,7 @@ export const MarsContextProvider = ({ children, data = null }) => {
           },
           robots: modifiedData,
           updateRobotData: updateRobotData,
+          lostCell: [{}],
         });
       };
 
