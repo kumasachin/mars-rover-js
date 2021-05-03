@@ -39,7 +39,21 @@ describe('Grid row snapshot', () => {
   afterEach(cleanup);
 
   it('should take a snapshot', () => {
-    const { asFragment } = render(<GridRow />);
-    expect(asFragment(<GridRow />)).toMatchSnapshot();
+    const { asFragment } = render(
+      <table>
+        <tbody>
+          <GridRow />
+        </tbody>
+      </table>
+    );
+    expect(
+      asFragment(
+        <table>
+          <tbody>
+            <GridRow />
+          </tbody>
+        </table>
+      )
+    ).toMatchSnapshot();
   });
 });
