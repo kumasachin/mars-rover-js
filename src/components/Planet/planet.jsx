@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-
-import { useFetch } from '../../hooks/use-fetch';
+import { useMarsContextAPI } from '../../context/marsContext';
 import { CONFIG } from '../../config/';
 import LABELS from '../../labels/';
 import './planet.css';
@@ -13,8 +12,7 @@ const Planet = () => {
     MESSAGE: { LOADING },
   } = LABELS;
   const [excutionStatus, setExcutionStatus] = useState(0);
-  const { response } = useFetch(CONFIG.PATH.marsapi, null, true);
-  console.log('get response', response);
+  const data = useMarsContextAPI();
 
   const onClickHandler = (event) => {
     event.preventdefault();
@@ -27,10 +25,7 @@ const Planet = () => {
         {ACTBUTON01}
       </button>
       <div className="column">Logs</div>
-      <div className="column ">
-        <div>{LOADING}</div>
-        <div>{DATA_NOT_FOUND}</div>
-      </div>
+      <div className="column ">{data ? <Grid /> : <div>{LOADING}</div>}</div>
     </>
   );
 };
