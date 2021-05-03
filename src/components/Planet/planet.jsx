@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useMarsContextAPI } from '../../context/marsContext';
 import LABELS from '../../labels/';
+import { Grid } from '../../modules/';
 import './planet.css';
 
 const Planet = () => {
@@ -25,7 +26,13 @@ const Planet = () => {
       </button>
       <div className="column">Logs</div>
       <div className="column ">
-        {data ? <div>data</div> : <div>{LOADING}</div>}
+        {data ? (
+          <div>
+            <Grid />
+          </div>
+        ) : (
+          <div>{LOADING}</div>
+        )}
       </div>
     </>
   );
