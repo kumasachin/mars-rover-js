@@ -39,9 +39,11 @@ const data = {
   },
 };
 
-jest.mock('../../hooks/use-fetch', () => ({
-  useFetch: () => data,
-}));
+jest.mock('../../context/marsContext', () => {
+  return {
+    useMarsContextAPI: () => data,
+  };
+});
 
 describe('Planet Grid rendering', () => {
   it('should take a snapshot', () => {

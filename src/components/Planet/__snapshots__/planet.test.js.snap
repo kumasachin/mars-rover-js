@@ -20,10 +20,7 @@ exports[`Planet Grid rendering should take a snapshot 1`] = `
     class="column "
   >
     <div>
-      Loading...
-    </div>
-    <div>
-      There are some issues in provided data. Please provide correct data
+      data
     </div>
   </div>
 </DocumentFragment>
