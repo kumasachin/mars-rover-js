@@ -13,7 +13,7 @@ export const GridRow = () => {
       for (let index = map.y - 1; index >= 0; index--) {
         rows.push(
           <tr key={`row-${index}`} className={`grid-row row-${index} `}>
-            <GridCell />
+            <GridCell rowIndex={index} />
           </tr>
         );
       }
