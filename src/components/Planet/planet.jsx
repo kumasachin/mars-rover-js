@@ -8,7 +8,7 @@ import './planet.css';
 const Planet = () => {
   const {
     PAGE: {
-      PLANET: { ACTBUTON01, DATA_NOT_FOUND },
+      PLANET: { ACTBUTON01 },
     },
     MESSAGE: { LOADING },
   } = LABELS;
@@ -21,7 +21,7 @@ const Planet = () => {
   const renderPlanet = () => {
     if (excutionStatus === 0) {
       return <div>Click above to start</div>;
-    } else if (data && excutionStatus) {
+    } else if (data.robots && excutionStatus) {
       return <Grid />;
     }
     return <div>{LOADING}</div>;

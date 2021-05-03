@@ -1,19 +1,24 @@
 import React, { useContext, useState, useEffect, createContext } from 'react';
-import { CONFIG } from '../config/index';
 import { responseTemplate } from '../utils/robo-utils';
 const MarsContext = createContext();
 
 export const MarsContextProvider = ({ children, data = null }) => {
   const [response, setResponse] = useState(null);
-  const [error, setError] = useState(null);
-
+  const updateRobotData = (updatedRobot) => {
+    setResponse(updatedRobot);
+  };
   useEffect(() => {
     if (data) {
       const formatdata = () => {
         const modifiedData = data.map((robotData) =>
           responseTemplate(robotData)
         );
-        setResponse(modifiedData);
+        const gridArray = modifiedData[0].grid.split(' ');
+        setResponse({
+          dimension: gridArray,
+          robots: modifiedData,
+          updateRobotData: updateRobotData,
+        });
       };
 
       formatdata();
@@ -21,9 +26,7 @@ export const MarsContextProvider = ({ children, data = null }) => {
   }, [data]);
 
   return (
-    <MarsContext.Provider value={response} error={error}>
-      {children}
-    </MarsContext.Provider>
+    <MarsContext.Provider value={response}>{children}</MarsContext.Provider>
   );
 };
 

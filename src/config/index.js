@@ -1,27 +1,27 @@
 export const CONFIG = {
   MAX_COORDINATE_LENGTH: 50,
   DIRECTIONS: ['N', 'S', 'E', 'W'],
-  INSTUCTIONS: ['L', 'R', 'F'],
+  INSTUCTIONS: ['L', 'R', 'M'],
   PATH: {
     marsapi: '/mars-robot',
   },
-  LEFT_TURN_MAP: {
+  LEFT: {
     N: 'W',
     W: 'S',
     S: 'E',
     E: 'N',
   },
-  RIGHT_TURN_MAP: {
+  RIGHT: {
     N: 'E',
     E: 'S',
     S: 'W',
     W: 'N',
   },
-  FRONT_MOVE_MAP: {
-    N: 'y',
-    S: 'y',
-    E: 'x',
-    W: 'x',
+  FRONT: {
+    N: 'yaxis',
+    S: 'yaxis',
+    E: 'xaxis',
+    W: 'xaxis',
   },
 };
 

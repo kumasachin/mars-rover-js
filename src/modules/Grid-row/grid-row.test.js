@@ -6,28 +6,31 @@ import GridRow from './grid-row';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-const data = [
-  {
-    name: 'R1',
-    color: 'green',
-    currentPosition: '0 0 N',
-    grid: '50 50',
-    x: 0,
-    y: 1,
-    d: 'N',
-    instructions: 'FFFFFFFFFFFFFFFFFFF',
-  },
-  {
-    name: 'R2',
-    color: 'green',
-    grid: '3 3',
-    currentPosition: '0 14 N',
-    x: 0,
-    y: 1,
-    d: 'N',
-    instructions: 'FRFFFFFFF',
-  },
-];
+const data = {
+  dimension: [0, 0],
+  robots: [
+    {
+      name: 'R1',
+      color: 'green',
+      currentPosition: '0 0 N',
+      grid: '50 50',
+      x: 0,
+      y: 1,
+      d: 'N',
+      instructions: 'FFFFFFFFFFFFFFFFFFF',
+    },
+    {
+      name: 'R2',
+      color: 'green',
+      grid: '3 3',
+      currentPosition: '0 14 N',
+      x: 0,
+      y: 1,
+      d: 'N',
+      instructions: 'FRFFFFFFF',
+    },
+  ],
+};
 
 jest.mock('../../context/marsContext', () => {
   return {

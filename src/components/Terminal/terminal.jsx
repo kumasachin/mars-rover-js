@@ -34,6 +34,7 @@ export const Terminal = ({ printLogs }) => {
       </header>
       <div className="consolebody">
         <p>></p>
+        {logs}
       </div>
     </div>
   );

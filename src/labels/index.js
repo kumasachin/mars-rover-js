@@ -14,7 +14,7 @@ export const LABELS = {
   DIRECTION: {
     LEFT: 'L',
     RIGHT: 'R',
-    FRONT: 'F',
+    FRONT: 'M',
   },
 };
 

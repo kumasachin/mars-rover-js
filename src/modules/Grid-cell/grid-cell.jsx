@@ -8,7 +8,7 @@ const GridCell = ({ rowIndex, cellCount }) => {
 
   const robotCell = () => (
     <span key={`robot-${rowIndex}`} className="robot">
-      <Robot />
+      {/* <Robot /> */}
     </span>
   );
 

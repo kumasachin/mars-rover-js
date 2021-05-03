@@ -1,3 +1,6 @@
 .grid-row {
     min-height: 40px;
 }
+.robot-row{
+    border:1px solid red;
+}
