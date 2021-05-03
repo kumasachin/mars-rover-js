@@ -1,27 +1,27 @@
 import React, { useContext, useState, useEffect, createContext } from 'react';
 import { CONFIG } from '../config/index';
+import { responseTemplate } from '../utils/robo-utils';
 const MarsContext = createContext();
 
-export const MarsContextProvider = (args) => {
-  const { children, data = null } = args;
-  const [response, setResponse] = useState(data);
+export const MarsContextProvider = ({ children, data = null }) => {
+  const [response, setResponse] = useState(null);
   const [error, setError] = useState(null);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const res = await fetch(CONFIG.PATH.marsapi);
-  //       const json = await res.json();
-  //       setResponse(json);
-  //     } catch (error) {
-  //       setError(error);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
+  useEffect(() => {
+    if (data) {
+      const formatdata = () => {
+        const modifiedData = data.map((robotData) =>
+          responseTemplate(robotData)
+        );
+        setResponse(modifiedData);
+      };
+
+      formatdata();
+    }
+  }, [data]);
 
   return (
-    <MarsContext.Provider value={data} error={error}>
+    <MarsContext.Provider value={response} error={error}>
       {children}
     </MarsContext.Provider>
   );

@@ -13,12 +13,10 @@ const Planet = () => {
   } = LABELS;
   const [excutionStatus, setExcutionStatus] = useState(0);
   const data = useMarsContextAPI();
-
   const onClickHandler = (event) => {
     event.preventDefault();
     setExcutionStatus(excutionStatus + 1);
   };
-
   const renderPlanet = () => {
     if (excutionStatus === 0) {
       return <div>Click above to start</div>;

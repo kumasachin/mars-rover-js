@@ -3,33 +3,29 @@ import { useMarsContextAPI } from '../../context/marsContext';
 import { ReactComponent as Robot } from '../../assets/icon/robot.svg';
 import './grid-cell.css';
 
-const GridCell = ({ rowIndex }) => {
+const GridCell = ({ rowIndex, cellCount }) => {
   const { map, robots } = useMarsContextAPI();
 
   const robotCell = () => (
-    <span key={`robot-${rowIndex}`}>
+    <span key={`robot-${rowIndex}`} className="robot">
       <Robot />
     </span>
   );
 
   const renderColumn = () => {
-    try {
-      let columns = [];
-      for (let index = 0; index < map.x; index++) {
-        columns.push(
-          <td
-            key={`cell-${rowIndex}-${index}`}
-            className={`grid-column column-${index}`}
-          >
-            {robotCell()}
-          </td>
-        );
-      }
-
-      return columns;
-    } catch (e) {
-      console.log('unknow error while rendering grid columns');
+    let columns = [];
+    for (let index = 0; index < cellCount; index++) {
+      columns.push(
+        <td
+          key={`cell-${rowIndex}-${index}`}
+          className={`grid-column column-${index}`}
+        >
+          {robotCell()}
+        </td>
+      );
     }
+
+    return columns;
   };
 
   return <>{renderColumn()}</>;

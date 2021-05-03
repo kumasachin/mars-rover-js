@@ -1,7 +1,6 @@
 .grid-column {
     min-width: 30px;
     min-height: 40px;
-
 }
 .grid-column span {
     min-height: 30px;

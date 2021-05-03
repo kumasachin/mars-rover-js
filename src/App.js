@@ -8,11 +8,11 @@ const App = () => {
   const setCSVData = (response) => {
     setData(response);
   };
-  console.log('data', data);
+
   return (
     <div className="App">
       <CSVReaderComponent setCSVData={setCSVData} />
-      <MarsContextProvider value={data} data={data}>
+      <MarsContextProvider data={data}>
         <Planet />
       </MarsContextProvider>
     </div>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { GridRow } from '../';
-import { useMarsContextAPI } from '../../context/marsContext';
 import './grid.css';
 
 export const Grid = () => {
