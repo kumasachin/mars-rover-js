@@ -15,6 +15,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:snapshot": "npm run test -- -u",
+    "test:coverage": "npm run test -- --coverage --watchAll=false",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -23,6 +25,7 @@
       "react-app/jest"
     ]
   },
+  "proxy": "http://localhost:5000/",
   "browserslist": {
     "production": [
       ">0.2%",
