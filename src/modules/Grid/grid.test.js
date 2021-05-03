@@ -7,7 +7,10 @@ import Grid from './Grid';
 Enzyme.configure({ adapter: new Adapter() });
 
 const data = {
-  dimension: [0, 0],
+  dimension: {
+    xaxis: 1,
+    yaxis: 1,
+  },
   robots: [
     {
       name: 'R1',

@@ -3,7 +3,17 @@
 exports[`Grid row snapshot should take a snapshot 1`] = `
 <DocumentFragment>
   <table>
-    <tbody />
+    <tbody>
+      <tr
+        class="grid-row row-0 robo-row"
+      >
+        <td
+          class="grid-column column-0"
+        >
+          <span />
+        </td>
+      </tr>
+    </tbody>
   </table>
 </DocumentFragment>
 `;

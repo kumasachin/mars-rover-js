@@ -5,8 +5,7 @@ import './grid-row.css';
 
 export const GridRow = ({ whichRoboToMove }) => {
   const { dimension, robots } = useMarsContextAPI();
-  const yaxis = parseInt(dimension[1]);
-  const xaxis = parseInt(dimension[0]);
+  const { xaxis, yaxis } = dimension;
   const findRoboInRow = (rowNumber, typeOfCoordinates) => {
     const allRobots = robots.filter((robot, index) => {
       return whichRoboToMove >= index && rowNumber === robot[typeOfCoordinates];
@@ -30,6 +29,7 @@ export const GridRow = ({ whichRoboToMove }) => {
             rowIndex={index}
             cellCount={xaxis}
             isRobotExitOnRow={isRobotExitOnRow}
+            whichRoboToMove={whichRoboToMove}
           />
         </tr>
       );

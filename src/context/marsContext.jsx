@@ -15,7 +15,10 @@ export const MarsContextProvider = ({ children, data = null }) => {
         );
         const gridArray = modifiedData[0].grid.split(' ');
         setResponse({
-          dimension: gridArray,
+          dimension: {
+            xaxis: gridArray[0],
+            yaxis: gridArray[1],
+          },
           robots: modifiedData,
           updateRobotData: updateRobotData,
         });

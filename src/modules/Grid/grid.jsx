@@ -72,7 +72,7 @@ export const Grid = () => {
       ...marsData,
       robots: [...robotListUpdated],
     });
-    //setRobotNewPosition([...robotListUpdated]);
+    // setRobotNewPosition([...robotListUpdated]);
   };
 
   useEffect(() => {
@@ -80,6 +80,10 @@ export const Grid = () => {
       moveRobot();
     }
   }, [robotList]);
+
+  useEffect(() => {
+    setRobotNewPosition(robots);
+  }, [robots]);
 
   return (
     <table
