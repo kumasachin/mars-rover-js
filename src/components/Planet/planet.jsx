@@ -23,11 +23,7 @@ const Planet = () => {
     if (excutionStatus === 0) {
       return <div>Click above to start</div>;
     } else if (data && excutionStatus) {
-      return (
-        <div>
-          <Grid />
-        </div>
-      );
+      return <Grid />;
     }
     return <div>{LOADING}</div>;
   };

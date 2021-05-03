@@ -6,12 +6,11 @@ import './grid-cell.css';
 const GridCell = ({ rowIndex }) => {
   const { map, robots } = useMarsContextAPI();
 
-  const robotCell = (allRobotInCell) =>
-    robots.map((robot, index) => (
-      <span key={`robot-${robot.name}-${index}`} className={`robot`}>
-        <Robot />
-      </span>
-    ));
+  const robotCell = () => (
+    <span key={`robot-${rowIndex}`}>
+      <Robot />
+    </span>
+  );
 
   const renderColumn = () => {
     try {

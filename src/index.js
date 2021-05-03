@@ -1,15 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './App';
 import './index.css';
-import { Planet } from './components/';
-import { MarsContextProvider } from './context/marsContext';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <MarsContextProvider>
-      <Planet />
-    </MarsContextProvider>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

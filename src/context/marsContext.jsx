@@ -2,24 +2,26 @@ import React, { useContext, useState, useEffect, createContext } from 'react';
 import { CONFIG } from '../config/index';
 const MarsContext = createContext();
 
-export const MarsContextProvider = ({ children }) => {
-  const [response, setResponse] = useState(null);
+export const MarsContextProvider = (args) => {
+  const { children, data = null } = args;
+  const [response, setResponse] = useState(data);
   const [error, setError] = useState(null);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch(CONFIG.PATH.marsapi);
-        const json = await res.json();
-        setResponse(json);
-      } catch (error) {
-        setError(error);
-      }
-    };
-    fetchData();
-  }, []);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const res = await fetch(CONFIG.PATH.marsapi);
+  //       const json = await res.json();
+  //       setResponse(json);
+  //     } catch (error) {
+  //       setError(error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
 
   return (
-    <MarsContext.Provider value={response} error={error}>
+    <MarsContext.Provider value={data} error={error}>
       {children}
     </MarsContext.Provider>
   );
