@@ -17,6 +17,12 @@ export const CONFIG = {
     S: 'W',
     W: 'N',
   },
+  FRONT_MOVE_MAP: {
+    N: 'y',
+    S: 'y',
+    E: 'x',
+    W: 'x',
+  },
 };
 
 export default CONFIG;
