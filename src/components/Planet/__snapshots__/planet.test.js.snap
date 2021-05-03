@@ -20,15 +20,7 @@ exports[`Planet Grid rendering should take a snapshot 1`] = `
     class="column "
   >
     <div>
-      <table
-        border="1"
-        cellspacing="0"
-        class="grid-container"
-        height="100%"
-        width="100%"
-      >
-        <tbody />
-      </table>
+      Click above to start
     </div>
   </div>
 </DocumentFragment>
