@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Planet from './Planet';
+import { Planet } from './components/';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
