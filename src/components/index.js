@@ -1,3 +1,4 @@
 import Planet from './Planet/planet';
 import CSVReaderComponent from './CSVReader/csv-reader';
-export { Planet, CSVReaderComponent };
+import Terminal from './Terminal/terminal';
+export { Planet, CSVReaderComponent, Terminal };

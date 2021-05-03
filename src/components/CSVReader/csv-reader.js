@@ -62,14 +62,12 @@ export const CSVReaderComponent = ({ setCSVData }) => {
             type="input"
             onBlur={handleOnBlur}
           />
-          <br />
           <input
             placeholder="movement"
             name="movement"
             type="input"
             onBlur={handleOnBlur}
           />
-          <br />
           <input
             type="button"
             value="Track robot"
@@ -77,6 +75,7 @@ export const CSVReaderComponent = ({ setCSVData }) => {
           />
         </div>
       )}
+      <br />
       <CSVReader
         cssClass="react-csv-input"
         label="Select CSV with robot position"
