@@ -15,9 +15,23 @@ const Planet = () => {
   const data = useMarsContextAPI();
 
   const onClickHandler = (event) => {
-    event.preventdefault();
+    event.preventDefault();
     setExcutionStatus(excutionStatus + 1);
   };
+
+  const renderPlanet = () => {
+    if (excutionStatus === 0) {
+      return <div>Click above to start</div>;
+    } else if (data && excutionStatus) {
+      return (
+        <div>
+          <Grid />
+        </div>
+      );
+    }
+    return <div>{LOADING}</div>;
+  };
+
   return (
     <>
       <h2>This is</h2>
@@ -25,15 +39,7 @@ const Planet = () => {
         {ACTBUTON01}
       </button>
       <div className="column">Logs</div>
-      <div className="column ">
-        {data ? (
-          <div>
-            <Grid />
-          </div>
-        ) : (
-          <div>{LOADING}</div>
-        )}
-      </div>
+      <div className="column ">{renderPlanet()}</div>
     </>
   );
 };
