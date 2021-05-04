@@ -1,5 +1,8 @@
 import CONFIG from '../config/';
 
+/*
+Method to modify csv reponse to expected json structure
+*/
 export const responseTemplate = (robot) => {
   if (robot.movements) {
     return robot;
@@ -20,6 +23,9 @@ export const responseTemplate = (robot) => {
   };
 };
 
+/*
+ Method to take action on robot next step
+ */
 export const robotNextStep = ({
   robotToMove,
   nextInstruction,
@@ -30,83 +36,18 @@ export const robotNextStep = ({
     ...robotToMove,
   };
 
+  //Private method to do front move
   const frontMove = () => {
     let robotNewDetails = { ...robotWithNewPosition };
     const { direction } = robotNewDetails;
-
-    switch (direction) {
-      case 'N':
-        if (
-          checkCurrentIsNoLostCell(
-            lostCell,
-            'yaxis',
-            direction,
-            robotNewDetails,
-            dimension
-          )
-        ) {
-          robotNewDetails.yaxis = robotNewDetails.yaxis + 1;
-        } else {
-          robotNewDetails.isOnEdge = true;
-        }
-
-        break;
-      case 'S':
-        if (
-          checkCurrentIsNoLostCell(
-            lostCell,
-            'yaxis',
-            direction,
-            robotNewDetails,
-            dimension
-          )
-        ) {
-          robotNewDetails.yaxis = robotNewDetails.yaxis - 1;
-        } else {
-          robotNewDetails.isOnEdge = true;
-        }
-        break;
-      case 'E':
-        if (
-          checkCurrentIsNoLostCell(
-            lostCell,
-            'xaxis',
-            direction,
-            robotNewDetails,
-            dimension
-          )
-        ) {
-          robotNewDetails.xaxis = robotNewDetails.xaxis + 1;
-        } else {
-          robotNewDetails.isOnEdge = true;
-        }
-        break;
-      case 'W':
-        if (
-          checkCurrentIsNoLostCell(
-            lostCell,
-            'xaxis',
-            direction,
-            robotNewDetails,
-            dimension
-          )
-        ) {
-          robotNewDetails.xaxis = robotNewDetails.xaxis - 1;
-        } else {
-          robotNewDetails.isOnEdge = true;
-        }
-
-        break;
-      default:
-      // code block
-    }
 
     //Reset value set by above if robot is lost
     robotNewDetails = checkIfRobotIsLost({
       dimension: dimension,
       axis: CONFIG.FRONT[direction],
       direction: direction,
-      robotNewDetails: robotNewDetails,
+      robotNewDetails: { ...robotNewDetails },
+      lostCell: lostCell,
     });
 
     return robotNewDetails;
@@ -129,58 +70,36 @@ export const robotNextStep = ({
   return robotWithNewPosition;
 };
 
-const checkCurrentIsNoLostCell = (
-  lostCell,
-  axis,
-  direction,
-  robotNewDetails,
-  dimension
-) => {
-  const scentFound = lostCell.some((item) => {
-    return (
-      item.xaxis === robotNewDetails['xaxis'] &&
-      item.yaxis === robotNewDetails['yaxis']
-    );
-  });
+const checkIfRobotIsLost = (args) => {
+  const { dimension, axis, direction, robotNewDetails, lostCell } = args;
+  if (dimension[axis] > robotNewDetails[axis] && robotNewDetails[axis] >= 0) {
+    // const noLostCell = checkCurrentIsNoLostCell(args);
 
-  const isRobotOnEdge =
-    dimension[axis] - 1 === robotNewDetails[axis] ||
-    robotNewDetails[axis] === 0;
-
-  if (scentFound && isRobotOnEdge) {
+    // Set next steps for robot
     if (direction === 'N' || direction === 'E') {
-      return dimension[axis] > robotNewDetails[axis] + 1;
+      robotNewDetails[axis] = robotNewDetails[axis] + 1;
     } else if (direction === 'S' || direction === 'W') {
-      return dimension[axis] < robotNewDetails[axis] - 1;
+      robotNewDetails[axis] = robotNewDetails[axis] - 1;
     }
-    return false;
-  }
+    // Check if robot is out of grid after moving
+    if (dimension[axis] <= robotNewDetails[axis] || robotNewDetails[axis] < 0) {
+      const lostRobot = {
+        ...robotNewDetails,
+        lost: {
+          xaxis: robotNewDetails.xaxis,
+          yaxis: robotNewDetails.yaxis,
+        },
+      };
 
-  return true;
-};
+      // log the scent
+      if (direction === 'N' || direction === 'E') {
+        lostRobot.lost[axis] = robotNewDetails[axis] - 1;
+      } else if (direction === 'S' || direction === 'W') {
+        lostRobot.lost[axis] = robotNewDetails[axis] + 1;
+      }
 
-const checkIfRobotIsLost = ({
-  dimension,
-  axis,
-  direction,
-  robotNewDetails,
-}) => {
-  if (dimension[axis] <= robotNewDetails[axis] || robotNewDetails[axis] < 0) {
-    const lostRobot = {
-      ...robotNewDetails,
-      lost: {
-        xaxis: robotNewDetails.xaxis,
-        yaxis: robotNewDetails.yaxis,
-      },
-    };
-
-    // log the scent
-    if (direction === 'N' || direction === 'E') {
-      lostRobot.lost[axis] = robotNewDetails[axis] - 1;
-    } else if (direction === 'S' || direction === 'W') {
-      lostRobot.lost[axis] = robotNewDetails[axis] + 1;
+      return lostRobot;
     }
-    return lostRobot;
   }
 
   return robotNewDetails;
@@ -189,6 +108,6 @@ const checkIfRobotIsLost = ({
 export default {
   responseTemplate,
   checkIfRobotIsLost,
-  checkCurrentIsNoLostCell,
+  // checkCurrentIsNoLostCell,
   robotNextStep,
 };

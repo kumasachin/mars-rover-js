@@ -18,13 +18,9 @@ export const GridRow = ({ whichRoboToMove }) => {
     let rows = [];
     for (let index = yaxis - 1; index >= 0; index--) {
       const isRobotExitOnRow = findRoboInRow(index, 'yaxis');
-      const roboClass = isRobotExitOnRow && 'robo-row';
 
       rows.push(
-        <tr
-          key={`row-${index}`}
-          className={`grid-row row-${index} ${roboClass}`}
-        >
+        <tr key={`row-${index}`} className={`grid-row row-${index}`}>
           <GridCell
             rowIndex={index}
             cellCount={xaxis}

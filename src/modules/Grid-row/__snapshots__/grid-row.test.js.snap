@@ -5,7 +5,7 @@ exports[`Grid row snapshot should take a snapshot 1`] = `
   <table>
     <tbody>
       <tr
-        class="grid-row row-0 robo-row"
+        class="grid-row row-0"
       >
         <td
           class="grid-column column-0"

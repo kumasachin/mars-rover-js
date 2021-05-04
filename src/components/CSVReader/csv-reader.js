@@ -37,7 +37,7 @@ export const CSVReaderComponent = ({ setCSVData }) => {
   };
 
   //Local mock enable
-  setCSVData(data);
+  // setCSVData(data);
 
   const papaparseOptions = {
     header: true,

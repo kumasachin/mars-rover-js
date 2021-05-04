@@ -2,9 +2,6 @@
 
 exports[`Planet Grid rendering should take a snapshot 1`] = `
 <DocumentFragment>
-  <h2>
-    This is
-  </h2>
   <button
     class="init"
     type="button"
