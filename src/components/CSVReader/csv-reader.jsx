@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CSVReader from 'react-csv-reader';
-import data from '../../mocks/';
+import data from '../../mocks';
 
 export const CSVReaderComponent = ({ setCSVData }) => {
   const [privateCSVData, setCSVPrivateData] = useState(null);
@@ -16,7 +16,6 @@ export const CSVReaderComponent = ({ setCSVData }) => {
       const CSVdataClone = [...privateCSVData];
       CSVdataClone.push(newFieldData);
       setCSVPrivateData(CSVdataClone);
-      console.log(CSVdataClone);
     }
   };
 

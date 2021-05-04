@@ -5,7 +5,7 @@ import { delay } from '../../utils/common-utils';
 import { GridRow } from '../';
 import './grid.css';
 
-export const Grid = ({ onRobotAction }) => {
+export const Grid = () => {
   const marsData = useMarsContextAPI();
   const { dimension, robots, updateRobotData, lostCell } = marsData;
   const [robotList, setRobotNewPosition] = useState(robots);
@@ -44,14 +44,6 @@ export const Grid = ({ onRobotAction }) => {
       lostCell: lostCell,
     });
 
-    onRobotAction({
-      currentCoordinate: `${robot.xaxis} ${robot.yaxis} ${robot.direction}`,
-      instruction: robot.instructions,
-      name: robot.name,
-      newDirection: `${robotWithNewPosition.xaxis} ${robotWithNewPosition.yaxis} ${robotWithNewPosition.direction}`,
-      isLost: robotWithNewPosition.lost,
-    });
-
     return robotWithNewPosition;
   };
 
@@ -61,8 +53,6 @@ export const Grid = ({ onRobotAction }) => {
     const nextInstruction = detectRobotNextInstruction(robot);
     const robotWithInstruction = passInstruction(robot, nextInstruction);
     const robotListUpdated = updateRobotsList(robotWithInstruction);
-
-    console.log('robotListUpdated', robotListUpdated);
 
     if (
       nextInstruction === null ||
