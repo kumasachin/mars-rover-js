@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useMarsContextAPI } from '../../context/marsContext';
 import LABELS from '../../labels/';
 import { Grid } from '../../modules/';
@@ -6,9 +6,6 @@ import './planet.css';
 
 const Planet = () => {
   const {
-    PAGE: {
-      PLANET: { ACTBUTON01 },
-    },
     MESSAGE: { LOADING },
   } = LABELS;
 

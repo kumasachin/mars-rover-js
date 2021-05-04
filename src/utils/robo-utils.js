@@ -70,8 +70,8 @@ export const robotNextStep = ({
   return robotWithNewPosition;
 };
 
-const checkIfRobotIsLost = (args) => {
-  const { dimension, axis, direction, robotNewDetails, lostCell } = args;
+export const checkIfRobotIsLost = (args) => {
+  const { dimension, axis, direction, robotNewDetails } = args;
   if (dimension[axis] > robotNewDetails[axis] && robotNewDetails[axis] >= 0) {
     // const noLostCell = checkCurrentIsNoLostCell(args);
 
@@ -103,11 +103,4 @@ const checkIfRobotIsLost = (args) => {
   }
 
   return robotNewDetails;
-};
-
-export default {
-  responseTemplate,
-  checkIfRobotIsLost,
-  // checkCurrentIsNoLostCell,
-  robotNextStep,
 };

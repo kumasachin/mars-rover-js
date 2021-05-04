@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import CSVReader from 'react-csv-reader';
 import './csv-read.css';
-import data from '../../mocks';
+// import data from '../../mocks';
 
 export const CSVReaderComponent = ({ setCSVData }) => {
   const [privateCSVData, setCSVPrivateData] = useState(null);
   const [newFieldData, setNewFieldData] = useState();
+  const nameInput = useRef(null);
+  const movementInput = useRef(null);
 
   const handleForce = (csvData) => {
     setCSVPrivateData(csvData);
@@ -17,6 +19,8 @@ export const CSVReaderComponent = ({ setCSVData }) => {
       const CSVdataClone = [...privateCSVData];
       CSVdataClone.push(newFieldData);
       setCSVPrivateData(CSVdataClone);
+      nameInput.current.value = '';
+      movementInput.current.value = '';
     }
   };
 
@@ -55,24 +59,22 @@ export const CSVReaderComponent = ({ setCSVData }) => {
   return (
     <>
       <p>Upload CSV with robots movements</p>
-      <CSVReader
-        cssClass="react-csv-input"
-        onFileLoaded={handleForce}
-        parserOptions={papaparseOptions}
-      />
+
       <br />
-      {privateCSVData && (
+      {privateCSVData ? (
         <div className="add-new-form">
           <input
             placeholder="name"
             name="roboname"
             type="input"
+            ref={nameInput}
             onBlur={handleOnBlur}
           />
           <input
             placeholder="movement"
             name="movement"
             type="input"
+            ref={movementInput}
             onBlur={handleOnBlur}
           />
           <input
@@ -81,6 +83,12 @@ export const CSVReaderComponent = ({ setCSVData }) => {
             onClick={handleNewAddition}
           />
         </div>
+      ) : (
+        <CSVReader
+          cssClass="react-csv-input"
+          onFileLoaded={handleForce}
+          parserOptions={papaparseOptions}
+        />
       )}
     </>
   );
