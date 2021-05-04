@@ -54,7 +54,7 @@ describe('Planet Grid rendering', () => {
   });
 });
 
-describe('<Planet /> should', () => {
+describe('<Planet /> should render ', () => {
   let wrapper,
     createWrapper = (collection) =>
       mount(<Planet name="mars" data={collection} />);
@@ -79,7 +79,4 @@ describe('Planet rendered grid', () => {
     expect(container.find('.grid-container').length).toEqual(1);
     expect(container.find('.grid-row').length).toEqual(6);
   });
-  // it('CSV selector robo should placed one by one', () => {
-  //   expect(container.find('span.robot').length).toEqual(1);
-  // });
 });
