@@ -1,13 +1,9 @@
 * {
   box-sizing: border-box;
 }
-
-.container {
+p {
   text-align: center;
-  padding: 15px;
-  margin: 10px auto;
 }
-
 .csv-input {
   padding: 10px;
   display: block;
@@ -16,7 +12,12 @@
   border-radius: 5px;
 }
 
-.container p {
-  padding-top: 10px;
-  color: #666;
+
+.add-new-form {
+  display: block;
+  text-align: center;
+}
+
+.add-new-form input{
+  margin: 0 3px
 }

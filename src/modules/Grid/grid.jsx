@@ -53,7 +53,9 @@ export const Grid = () => {
     const nextInstruction = detectRobotNextInstruction(robot);
     const robotWithInstruction = passInstruction(robot, nextInstruction);
     const robotListUpdated = updateRobotsList(robotWithInstruction);
-
+    if (queueOfRobot === 0 && instructionCount === 0) {
+      await delay(1700);
+    }
     if (
       nextInstruction === null ||
       robotWithInstruction.lost ||

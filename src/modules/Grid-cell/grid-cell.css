@@ -11,7 +11,7 @@ span.robot {
 }
 
 span.robot svg {
-    width: 60%;
+    width: 3em;
 }
 span.robot.E {
     -webkit-transform: rotate(90deg);

@@ -11,30 +11,20 @@ const Planet = () => {
     },
     MESSAGE: { LOADING },
   } = LABELS;
-  const [excutionStatus, setExcutionStatus] = useState(0);
 
   const data = useMarsContextAPI();
-  const onClickHandler = (event) => {
-    event.preventDefault();
-    setExcutionStatus(excutionStatus + 1);
-  };
 
   const renderPlanet = () => {
-    if (excutionStatus === 0) {
-      return <div>Click above to start</div>;
-    } else if (data.robots && excutionStatus) {
+    if (data.robots) {
       return <Grid />;
     }
     return <div>{LOADING}</div>;
   };
 
   return (
-    <>
-      <button className="init" onClick={onClickHandler} type="button">
-        {ACTBUTON01}
-      </button>
-      <div>{renderPlanet()}</div>
-    </>
+    <div className="planet-container">
+      {data && data.robots && <div>{renderPlanet()}</div>}
+    </div>
   );
 };
 

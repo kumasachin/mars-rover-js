@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CSVReader from 'react-csv-reader';
+import './csv-read.css';
 import data from '../../mocks';
 
 export const CSVReaderComponent = ({ setCSVData }) => {
@@ -53,8 +54,15 @@ export const CSVReaderComponent = ({ setCSVData }) => {
 
   return (
     <>
+      <p>Upload CSV with robots movements</p>
+      <CSVReader
+        cssClass="react-csv-input"
+        onFileLoaded={handleForce}
+        parserOptions={papaparseOptions}
+      />
+      <br />
       {privateCSVData && (
-        <div>
+        <div className="add-new-form">
           <input
             placeholder="name"
             name="roboname"
@@ -69,18 +77,11 @@ export const CSVReaderComponent = ({ setCSVData }) => {
           />
           <input
             type="button"
-            value="Track robot"
+            value="Add new robot"
             onClick={handleNewAddition}
           />
         </div>
       )}
-      <br />
-      <CSVReader
-        cssClass="react-csv-input"
-        label="Select CSV with robot position"
-        onFileLoaded={handleForce}
-        parserOptions={papaparseOptions}
-      />
     </>
   );
 };
