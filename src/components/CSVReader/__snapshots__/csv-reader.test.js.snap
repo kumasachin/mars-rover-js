@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CSV reader snapshot should take a snapshot 1`] = `
+<DocumentFragment>
+  <p>
+    Upload CSV with robots movements
+  </p>
+  <br />
+  <div
+    class="react-csv-input"
+  >
+    <input
+      accept=".csv, text/csv"
+      class="csv-input"
+      id="react-csv-reader-input"
+      name="react-csv-reader-input"
+      type="file"
+    />
+  </div>
+</DocumentFragment>
+`;

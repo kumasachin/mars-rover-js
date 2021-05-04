@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Grid cell snapshot should take a snapshot 1`] = `
+<DocumentFragment>
+  <table>
+    <tbody>
+      <tr>
+        <td
+          class="grid-column column-0"
+        >
+          <span />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</DocumentFragment>
+`;
