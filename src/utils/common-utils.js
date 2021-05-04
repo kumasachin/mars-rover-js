@@ -5,3 +5,7 @@ export const delay = async (delayInms) => {
     }, delayInms);
   });
 };
+
+export default {
+  delay,
+};

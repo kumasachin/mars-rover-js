@@ -3,7 +3,7 @@ import CSVReader from 'react-csv-reader';
 import './csv-read.css';
 // import data from '../../mocks';
 
-export const CSVReaderComponent = ({ setCSVData }) => {
+export const CSVReaderComponent = ({ setCSVData, CSVTestData = null }) => {
   const [privateCSVData, setCSVPrivateData] = useState(null);
   const [newFieldData, setNewFieldData] = useState();
   const nameInput = useRef(null);
@@ -40,7 +40,7 @@ export const CSVReaderComponent = ({ setCSVData }) => {
     }
   };
 
-  //Local mock enable
+  //Local mock enable to test without csv
   // setCSVData(data);
 
   const papaparseOptions = {
@@ -61,7 +61,7 @@ export const CSVReaderComponent = ({ setCSVData }) => {
       <p>Upload CSV with robots movements</p>
 
       <br />
-      {privateCSVData ? (
+      {privateCSVData || CSVTestData ? (
         <div className="add-new-form">
           <input
             placeholder="name"
@@ -80,6 +80,7 @@ export const CSVReaderComponent = ({ setCSVData }) => {
           <input
             type="button"
             value="Add new robot"
+            name="csvSubmit"
             onClick={handleNewAddition}
           />
         </div>

@@ -49,3 +49,13 @@ describe('CSV reader snapshot', () => {
     expect(asFragment(<CSVReaderComponent />)).toMatchSnapshot();
   });
 });
+
+describe('App CSV rendered grid', () => {
+  const container = mount(<CSVReaderComponent CSVTestData={data} />);
+
+  it('CSV selector should visible with grid', () => {
+    expect(container.find('div.add-new-form').length).toEqual(1);
+    expect(container.find('input[name="roboname"]').length).toEqual(1);
+    expect(container.find('input[name="csvSubmit"]').length).toEqual(1);
+  });
+});

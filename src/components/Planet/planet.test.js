@@ -7,36 +7,38 @@ import Planet from './planet';
 Enzyme.configure({ adapter: new Adapter() });
 
 const data = {
-  response: {
-    map: {
-      x: 1611,
-      y: 16,
-    },
-    lostCell: {
-      x: [],
-      y: [],
-    },
-    robots: [
-      {
-        name: 'R1',
-        color: 'green',
-        currentPosition: '0 0 N',
-        x: 0,
-        y: 1,
-        d: 'N',
-        instructions: 'FFFFFFFFFFFFFFFFFFF',
-      },
-      {
-        name: 'R2',
-        color: 'green',
-        currentPosition: '0 14 N',
-        x: 0,
-        y: 1,
-        d: 'N',
-        instructions: 'FRFFFFFFF',
-      },
-    ],
+  map: {
+    x: 1611,
+    y: 16,
   },
+  lostCell: {
+    xaxis: [],
+    yaxis: [],
+  },
+  dimension: {
+    xaxis: 6,
+    yaxis: 6,
+  },
+  robots: [
+    {
+      name: 'R1',
+      color: 'green',
+      currentPosition: '0 0 N',
+      xaxis: 0,
+      yaxis: 1,
+      direction: 'N',
+      instructions: 'FFFFFFFFFFFFFFFFFFF',
+    },
+    {
+      name: 'R2',
+      color: 'green',
+      currentPosition: '0 14 N',
+      xaxis: 0,
+      yaxis: 1,
+      direction: 'N',
+      instructions: 'FRFFFFFFF',
+    },
+  ],
 };
 
 jest.mock('../../context/marsContext', () => {
@@ -61,7 +63,23 @@ describe('<Planet /> should', () => {
   });
 
   it('should have the button to start robot movement', async () => {
-    wrapper = createWrapper(data.response.robots);
+    wrapper = createWrapper(data.robots);
     expect(wrapper.find('button.init')).toBeDefined();
   });
+});
+
+describe('Planet rendered grid', () => {
+  const container = mount(<Planet />);
+
+  it('Planet should visible with grid', () => {
+    expect(container.find('div.planet-container').length).toEqual(1);
+  });
+  it('Planet should visible with grid', () => {
+    expect(container.find('.planet-surface').length).toEqual(1);
+    expect(container.find('.grid-container').length).toEqual(1);
+    expect(container.find('.grid-row').length).toEqual(6);
+  });
+  // it('CSV selector robo should placed one by one', () => {
+  //   expect(container.find('span.robot').length).toEqual(1);
+  // });
 });

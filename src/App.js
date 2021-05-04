@@ -3,7 +3,7 @@ import { CSVReaderComponent, Planet } from './components/';
 import { MarsContextProvider } from './context/marsContext';
 import './App.css';
 
-const App = () => {
+const App = ({ CSVTestData }) => {
   const [data, setData] = useState();
   const setCSVData = (response) => {
     setData(response);
@@ -11,8 +11,8 @@ const App = () => {
 
   return (
     <div className="App">
-      <CSVReaderComponent setCSVData={setCSVData} />
-      <MarsContextProvider data={data}>
+      <CSVReaderComponent setCSVData={setCSVData} CSVTestData={CSVTestData} />
+      <MarsContextProvider data={data || CSVTestData}>
         <Planet />
       </MarsContextProvider>
     </div>

@@ -20,7 +20,9 @@ const Planet = () => {
 
   return (
     <div className="planet-container">
-      {data && data.robots && <div>{renderPlanet()}</div>}
+      {data && data.robots && (
+        <div className="planet-surface">{renderPlanet()}</div>
+      )}
     </div>
   );
 };
